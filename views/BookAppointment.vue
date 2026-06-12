@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <nav class="navbar navbar-light bg-white shadow-sm mb-4">
@@ -36,6 +35,8 @@
 </template>
 
 <script>
+const BASE_URL = "https://nxbn8cjv5l.execute-api.us-east-1.amazonaws.com/dev"
+
 export default {
   name: "BookAppointment",
   data() {
@@ -47,7 +48,7 @@ export default {
     };
   },
   mounted() {
-    fetch("https://e2m2b7y8c9.execute-api.us-east-1.amazonaws.com/prod/slots")
+    fetch(`${BASE_URL}/slots`)
       .then(res => res.json())
       .then(data => {
         const parsed = JSON.parse(data.body);
@@ -62,7 +63,7 @@ export default {
         slot: this.selectedSlot
       };
 
-      fetch("https://e2m2b7y8c9.execute-api.us-east-1.amazonaws.com/prod/appointments", {
+      fetch(`${BASE_URL}/appointments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ body: JSON.stringify(payload) })
