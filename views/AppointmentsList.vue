@@ -75,7 +75,7 @@ export default {
       console.log("appointmentId:", cleanAppointment.appointmentId);
       console.log(" appointmentId (direct):", appointment.appointmentId);
 
-      const url = `${BASE_URL}/appointments/${appointment.appointmentId}`;
+      const url = `${BASE_URL}/appointments/status`;
 
       const payload = { status: newStatus };
 
